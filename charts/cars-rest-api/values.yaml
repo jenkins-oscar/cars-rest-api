@@ -50,6 +50,7 @@ mongodb:
   mongodbUsername: admin
   mongodbDatabase: cars_rest_api
   mongodbPassword: Password1
+
 ## Provision an external database (Only if mongodb.enabled is false)
 ## You can:
 ##    1) Pass an already existing Secret with your database credentials

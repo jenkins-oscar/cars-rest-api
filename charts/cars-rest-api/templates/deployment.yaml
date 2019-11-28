@@ -24,31 +24,26 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
-  {{- if .Values.mongodb.enabled }}
-            - name: DATABASE_HOST
-              value: {{ template {{ .Chart.Name }}".mongodb.fullname" . }}
+        {{- if .Values.mongodb.enabled }}
+            - name: MONGODB_URI
+              value: "mongodb://mongoadmin:password01@cars_rest_api:27017/cars_api?authSource=admin"
+            - name: MONGODB_HOST
+              value: ""
             - name: DATABASE_PORT
               value: "27017"
             - name: DATABASE_USER
               value: {{ .Values.mongodb.mongodbUsername | quote }}
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: mongoadmin
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: password01
             - name: DATABASE_PASSWORD
               value: {{ .Values.mongodb.mongodbPassword | quote }}
-              # valueFrom:
-              #   secretKeyRef:
-              #     name: {{ template "node.mongodb.fullname" . }}
-              #     key: mongodb-password
             - name: DATABASE_NAME
               value: {{ .Values.mongodb.mongodbDatabase | quote }}
             - name: DATABASE_CONNECTION_OPTIONS
               value: ""
-            {{- else }}
-            {{- $type := dict "type" .Values.externaldb.type }}
-            - name: DATABASE_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: {{ template "node.secretName" . }}
-                  key: {{ template "externaldb.host" $type }}
-    {{- end }}
+        {{- end }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:
