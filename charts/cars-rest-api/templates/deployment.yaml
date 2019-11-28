@@ -24,10 +24,31 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
-{{- range $pkey, $pval := .Values.env }}
-        - name: {{ $pkey }}
-          value: {{ quote $pval }}
-{{- end }}
+  {{- if .Values.mongodb.enabled }}
+            - name: DATABASE_HOST
+              value: {{ template {{ .Chart.Name }}".mongodb.fullname" . }}
+            - name: DATABASE_PORT
+              value: "27017"
+            - name: DATABASE_USER
+              value: {{ .Values.mongodb.mongodbUsername | quote }}
+            - name: DATABASE_PASSWORD
+              value: {{ .Values.mongodb.mongodbPassword | quote }}
+              # valueFrom:
+              #   secretKeyRef:
+              #     name: {{ template "node.mongodb.fullname" . }}
+              #     key: mongodb-password
+            - name: DATABASE_NAME
+              value: {{ .Values.mongodb.mongodbDatabase | quote }}
+            - name: DATABASE_CONNECTION_OPTIONS
+              value: ""
+            {{- else }}
+            {{- $type := dict "type" .Values.externaldb.type }}
+            - name: DATABASE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "node.secretName" . }}
+                  key: {{ template "externaldb.host" $type }}
+    {{- end }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:
