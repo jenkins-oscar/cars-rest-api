@@ -1,0 +1,32 @@
+version: '2'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sharepointoscar/cars-api:v3
+    ports:
+      - '1337:1337'
+    environment:
+      - NODE_ENV=development
+      - PORT=1337
+      - MONGODB_HOST=database
+      - MONGODB_PORT=27017
+      - MONGODB_URI=mongodb://mongoadmin:password01@database:27017/cars_api?authSource=admin
+      - ENABLE_ELASTICSEARCH=false
+      - DISABLE_SAILS_SEED=false
+      - DISABLE_GRAPHQL=false
+    depends_on:
+      - database
+    links:
+      - database
+  database:
+    image: mongo:4.0
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=password01
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - /Users/omedina/Documents:/var/lib/mongodb

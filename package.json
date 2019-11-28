@@ -1,0 +1,45 @@
+{
+  "name": "cars-rest-api",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Examploe REST API",
+  "engines": {
+    "node": "8.5.0",
+    "npm": "5.3.0"
+  },
+  "keywords": [],
+  "dependencies": {
+    "@types/express": "^4.11.0",
+    "@types/node": "^8.5.2",
+    "elasticsearch": "^13.3.1",
+    "express-graphql": "^0.6.11",
+    "graphql": "^0.10.5",
+    "include-all": "^1.0.0",
+    "loadash": "^1.0.0",
+    "rc": "1.0.1",
+    "sails": "^0.12.14",
+    "sails-disk": "~0.10.9",
+    "sails-elastic": "^0.12.0",
+    "sails-hook-validation": "^0.4.7",
+    "sails-mongo": "^0.12.2",
+    "sails-seed": "^0.5.0",
+    "sails-swagger": "^0.5.1",
+    "swagger-ui": "^2.2.10",
+    "swagger-ui-themes": "^3.0.0",
+    "ts-node": "^4.0.2",
+    "typescript": "^2.6.2",
+    "waterline-to-graphql": "0.0.3"
+  },
+  "scripts": {
+    "debug": "node debug app.js",
+    "start": "ENABLE_ELASTICSEARCH=false DISABLE_SAILS_SEED=false DISABLE_GRAPHQL=true node app.js"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SharePointOscar/cars-api.git"
+  },
+  "author": "Oscar Medina @SharePointOscar",
+  "license": "MIT",
+  "devDependencies": {}
+}

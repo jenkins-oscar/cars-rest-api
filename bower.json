@@ -1,0 +1,33 @@
+{
+  "name": "cars-rest-api",
+  "description": "a REST API based on SailsJS.  It has built-in Swagger spec generation.",
+  "main": "app.js",
+  "authors": [
+    "Oscar Medina"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/SharePointOscar/cars-rest-api",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {},
+  "dependencies": {
+    "angular": "1.2.32",
+    "bootstrap": "3.2.0",
+    "bootswatch": "~3.2.0",
+    "angular-ui-router": "~0.2.10",
+    "angular-ui-utils": "~0.1.1",
+    "angular-sails": "1.1.4",
+    "lodash": "~2.4.1",
+    "angular-moment": "~0.6.2",
+    "angular-translate": "~2.1.0",
+    "angular-translate-loader-static-files": "~2.1.0",
+    "angular-bootstrap": "~0.10.0",
+    "swagger-ui-themes": "^3.0.0"
+  }
+}
