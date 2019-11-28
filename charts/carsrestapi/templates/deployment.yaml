@@ -24,11 +24,10 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
-        {{- if .Values.mongodb.enabled }}
             - name: MONGODB_URI
-              value: "mongodb://mongoadmin:password01@cars_rest_api:27017/cars_api?authSource=admin"
+              value: "mongodb://mongoadmin:password01@{{ template "mongodb.fullname" .  }}:27017/cars_api?authSource=admin"
             - name: MONGODB_HOST
-              value: ""
+              value: {{ template "mongodb.fullname" . }}
             - name: DATABASE_PORT
               value: "27017"
             - name: DATABASE_USER
@@ -43,7 +42,6 @@ spec:
               value: {{ .Values.mongodb.mongodbDatabase | quote }}
             - name: DATABASE_CONNECTION_OPTIONS
               value: ""
-        {{- end }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:
