@@ -38,8 +38,7 @@ spec:
               value: {{ .Values.mongodb.mongodbPassword | quote }}
             - name: DATABASE_NAME
               value: {{ .Values.mongodb.mongodbDatabase | quote }}
-            - name: DATABASE_CONNECTION_OPTIONS
-              value: ""
+
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:
