@@ -25,7 +25,7 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
             - name: MONGODB_URI
-              value: "mongodb://mongoadmin:password01@{{ template "mongodb.fullname" .  }}:27017/cars_api?authSource=admin"
+              value: "mongodb://mongoadmin:password01@{{ template "mongodb.fullname" .  }}:27017/cars_rest_api?authSource=admin"
             - name: MONGODB_HOST
               value: {{ template "mongodb.fullname" . }}
             - name: DATABASE_PORT
