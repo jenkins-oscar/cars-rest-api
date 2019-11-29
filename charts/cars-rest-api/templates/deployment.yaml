@@ -32,10 +32,8 @@ spec:
               value: "27017"
             - name: DATABASE_USER
               value: {{ .Values.mongodb.mongodbUsername | quote }}
-            - name: MONGO_INITDB_ROOT_USERNAME
-              value: mongoadmin
-            - name: MONGO_INITDB_ROOT_PASSWORD
-              value: Password1
+            - name: MONGODB_ROOT_PASSWORD
+              value: {{ default "" .Values.mongodb.mongodbRootPassword | quote }}
             - name: DATABASE_PASSWORD
               value: {{ .Values.mongodb.mongodbPassword | quote }}
             - name: DATABASE_NAME
