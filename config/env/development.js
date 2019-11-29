@@ -26,7 +26,7 @@ module.exports = {
    * Set the port in the developm ent environment to 443                        *
    ***************************************************************************/
 
-   port: 1337,
+   port: process.env.PORT,
  	 environment: 'development',
 
 };
