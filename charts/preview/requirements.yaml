@@ -9,7 +9,7 @@ dependencies:
   repository: http://chartmuseum.jenkins-x.io
   version: 2.3.92
 - name: mongodb
-  alias: preview-cars-rest-api
+  alias: preview-db
   version: 7.4.6
   repository: https://kubernetes-charts.storage.googleapis.com
   condition: mongodb.enabled
