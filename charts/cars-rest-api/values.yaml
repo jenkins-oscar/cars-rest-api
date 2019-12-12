@@ -43,7 +43,7 @@ readinessProbe:
 ## MongoDB chart configuration
 ## ref: https://github.com/helm/charts/blob/master/stable/mongodb/values.yaml
 ##
-jx-mongodb:
+jx-cars-rest-api-db:
   ## Whether to deploy a mongodb server to satisfy the applications database requirements.
   ## To use an external database set this to false and configure the externaldb parameters
   enabled: true
