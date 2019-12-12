@@ -26,7 +26,7 @@ spec:
         env:
             - name: MONGODB_URI
               #value: "mongodb://admin:Password1@{{ template "mongodb.fullname" . }}-mongodb:27017/cars_rest_api"
-              value: "mongodb://{{ .Chart.Name }}-db:27017/cars_rest_api"
+              value: "{{ .Chart.Name }}-db"
             - name: MONGODB_HOST
               value: {{ template "mongodb.fullname" . }}
             - name: DATABASE_PORT
