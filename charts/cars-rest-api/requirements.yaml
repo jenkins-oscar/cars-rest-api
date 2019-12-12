@@ -1,5 +1,6 @@
 dependencies:
 - name: mongodb
+  alias: cars-rest-api-db
   version: 7.4.6
   repository: https://kubernetes-charts.storage.googleapis.com
   condition: mongodb.enabled
