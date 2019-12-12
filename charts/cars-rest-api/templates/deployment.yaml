@@ -32,13 +32,13 @@ spec:
             - name: DATABASE_PORT
               value: "27017"
             - name: DATABASE_USER
-              value: {{ index .Values "jx-mongodb" "mongodbUsername" }}
+              value: {{ index .Values "jx-cars-rest-api-db" "mongodbUsername" }}
             - name: MONGODB_ROOT_PASSWORD
-              value: {{ index .Values "jx-mongodb" "mongodbRootPassword" }}
+              value: {{ index .Values "jx-cars-rest-api-db" "mongodbRootPassword" }}
             - name: DATABASE_PASSWORD
-              value: {{ index .Values "jx-mongodb" "mongodbPassword" }}
+              value: {{ index .Values "jx-cars-rest-api-db" "mongodbPassword" }}
             - name: DATABASE_NAME
-              value: {{ index .Values "jx-mongodb" "mongodbDatabase" }}
+              value: {{ index .Values "jx-cars-rest-api-db" "mongodbDatabase" }}
 
         ports:
         - containerPort: {{ .Values.service.internalPort }}
