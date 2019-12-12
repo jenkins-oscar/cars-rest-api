@@ -32,16 +32,12 @@ spec:
             - name: DATABASE_PORT
               value: "27017"
             - name: DATABASE_USER
-              #value: {{default "" .Values.jx-mongodb.mongodbUsername | quote }}
               value: {{ index .Values "jx-mongodb" "mongodbUsername" }}
             - name: MONGODB_ROOT_PASSWORD
-              #value: {{ default "" .Values.jx-mongodb.mongodbRootPassword | quote }}
               value: {{ index .Values "jx-mongodb" "mongodbRootPassword" }}
             - name: DATABASE_PASSWORD
-              #value: {{default "" .Values.jx-mongodb.mongodbPassword | quote }}
               value: {{ index .Values "jx-mongodb" "mongodbPassword" }}
             - name: DATABASE_NAME
-              #value: {{default "" .Values.jx-mongodb.mongodbDatabase | quote }}
               value: {{ index .Values "jx-mongodb" "mongodbDatabase" }}
 
         ports:
