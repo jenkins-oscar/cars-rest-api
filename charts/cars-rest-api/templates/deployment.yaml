@@ -35,7 +35,7 @@ spec:
               value: {{ index .Values "jx-cars-rest-api-db" "mongodbUsername" }}
             - name: MONGODB_ROOT_PASSWORD
               value: {{ index .Values "jx-cars-rest-api-db" "mongodbRootPassword" }}
-            - name: DATABASE_PASSWORD
+            - name: MONGODB_PASSWORD
               value: {{ index .Values "jx-cars-rest-api-db" "mongodbPassword" }}
             - name: DATABASE_NAME
               value: {{ index .Values "jx-cars-rest-api-db" "mongodbDatabase" }}
