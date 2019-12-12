@@ -53,7 +53,7 @@ jx-mongodb:
   mongodbUsername: admin
   mongodbDatabase: cars_rest_api
   mongodbPassword: Password1
-  MongoDB admin password
+  ## MongoDB admin password
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#setting-the-root-password-on-first-run
   ##
   mongodbRootPassword: Password1
