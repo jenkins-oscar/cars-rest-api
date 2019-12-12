@@ -8,11 +8,12 @@ dependencies:
   name: exposecontroller
   repository: http://chartmuseum.jenkins-x.io
   version: 2.3.92
+
 - name: mongodb
   alias: preview-db
   version: 7.4.6
   repository: https://kubernetes-charts.storage.googleapis.com
-  condition: mongodb.enabled
+  
 
   # !! "alias: preview" must be last entry in dependencies array !!
   # !! Place custom dependencies above !!
