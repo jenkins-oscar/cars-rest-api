@@ -20,3 +20,40 @@ preview:
     repository:
     tag:
     pullPolicy: IfNotPresent
+
+## MongoDB chart configuration
+## ref: https://github.com/helm/charts/blob/master/stable/mongodb/values.yaml
+##
+mongodb:
+  ## Whether to deploy a mongodb server to satisfy the applications database requirements.
+  ## To use an external database set this to false and configure the externaldb parameters
+  enabled: true
+  mongodbUsername: admin
+  mongodbDatabase: cars_rest_api
+  mongodbPassword: Password1
+  ## MongoDB admin password
+  ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#setting-the-root-password-on-first-run
+  ##
+  mongodbRootPassword: Password1
+
+
+## Provision an external database (Only if mongodb.enabled is false)
+## You can:
+##    1) Pass an already existing Secret with your database credentials
+##    2) Pass an already existing ServiceInstance name and specify the service catalog broker to automatically create a ServiceBinding for your application.
+##
+externaldb:
+  ## Set to true if your external database has ssl enabled
+  ##
+  ssl: false
+  ### You can use an existing secret containing your database credentials
+  ### Please refer to the respective section in the README to know the details about this secret.
+  ##
+  secretName:
+  ## Only if using Kubernetes Service Catalog you can specify the kind of broker used. Available options are osba|gce|aws
+  ##
+  type: osba
+  ## If you provide the serviceInstanceName, the chart will create a ServiceBinding for that ServiceInstance
+  ##
+  broker:
+    serviceInstanceName:
