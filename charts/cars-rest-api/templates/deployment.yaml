@@ -39,6 +39,8 @@ spec:
               value: {{ index .Values "jx-cars-rest-api-db" "mongodbPassword" }}
             - name: DATABASE_NAME
               value: {{ index .Values "jx-cars-rest-api-db" "mongodbDatabase" }}
+            - name: ALLOW_EMPTY_PASSWORD
+              value: "yes"
 
         ports:
         - containerPort: {{ .Values.service.internalPort }}
