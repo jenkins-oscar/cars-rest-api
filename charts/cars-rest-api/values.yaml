@@ -43,20 +43,20 @@ readinessProbe:
 ## MongoDB chart configuration
 ## ref: https://github.com/helm/charts/blob/master/stable/mongodb/values.yaml
 ##
-mongodb:
+jx-mongodb:
   ## Whether to deploy a mongodb server to satisfy the applications database requirements.
   ## To use an external database set this to false and configure the externaldb parameters
   enabled: true
   ## if you enable password, then uncomment the lines below
   usePassword: false
 
-  ## mongodbUsername: admin
-  ## mongodbDatabase: cars_rest_api
-  ## mongodbPassword: Password1
+  mongodbUsername: admin
+  mongodbDatabase: cars_rest_api
+  mongodbPassword: Password1
   ## MongoDB admin password
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#setting-the-root-password-on-first-run
   ##
-  # mongodbRootPassword: Password1
+  mongodbRootPassword: Password1
 
 
 ## Provision an external database (Only if mongodb.enabled is false)
