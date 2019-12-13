@@ -51,8 +51,8 @@ cars-rest-api-db:
   ## Enable authentication
   ## ref: https://docs.mongodb.com/manual/tutorial/enable-authentication/
   #
-  usePassword: false
-  # existingSecret: name-of-existing-secret
+  usePassword: true
+  existingSecret: mongodb-auth
 
   ## MongoDB custom user and database
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#creating-a-user-and-database-on-first-run
