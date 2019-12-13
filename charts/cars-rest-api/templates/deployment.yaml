@@ -35,8 +35,9 @@ spec:
             #   value: {{ index .Values "cars-rest-api-db" "mongodbUsername" }}
             # - name: MONGODB_ROOT_PASSWORD
             #   value: {{ index .Values "cars-rest-api-db" "mongodbRootPassword" }}
-            # - name: MONGODB_PASSWORD
-            #   value: {{ index .Values "cars-rest-api-db" "mongodbPassword" }}
+            - name: MONGODB_PASSWORD
+               #value: {{ index .Values "cars-rest-api-db" "mongodbPassword" }}
+              value: Password1
             # - name: DATABASE_NAME
             #   value: {{ index .Values "cars-rest-api-db" "mongodbDatabase" }}
             - name: ALLOW_EMPTY_PASSWORD
