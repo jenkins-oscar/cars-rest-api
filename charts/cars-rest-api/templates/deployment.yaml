@@ -31,12 +31,18 @@ spec:
               value: {{ template "mongodb.fullname" . }}
             - name: DATABASE_PORT
               value: "27017"
-            # - name: DATABASE_USER
-            #   value: {{ index .Values "cars-rest-api-db" "mongodbUsername" }}
+            - name: DATABASE_USER
+              valueFrom:
+              secretKeyRef:
+                key:  username
+                name: {{ .Release.Name }}-auth
             # - name: MONGODB_ROOT_PASSWORD
             #   value: {{ index .Values "cars-rest-api-db" "mongodbRootPassword" }}
-            # - name: MONGODB_PASSWORD
-            #   value: {{ index .Values "cars-rest-api-db" "mongodbPassword" }}
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key:  password
+                  name: {{ .Release.Name }}-auth
             # - name: DATABASE_NAME
             #   value: {{ index .Values "cars-rest-api-db" "mongodbDatabase" }}
             # - name: ALLOW_EMPTY_PASSWORD

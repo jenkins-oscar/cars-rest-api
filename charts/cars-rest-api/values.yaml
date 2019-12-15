@@ -58,7 +58,7 @@ cars-rest-api-db:
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#creating-a-user-and-database-on-first-run
   ##
   mongodbUsername: admin
-  # mongodbDatabase: cars_rest_api
+  mongodbDatabase: cars_rest_api
   mongodbPassword: Password1
 
   ## MongoDB admin password
