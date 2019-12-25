@@ -44,7 +44,7 @@ spec:
             - name: MONGODB_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key: rootpassword
+                  key: mongodbRootPassword
                   name: {{ .Release.Name }}-auth                  
             # - name: DATABASE_NAME
             #   value: {{ index .Values "cars-rest-api-db" "mongodbDatabase" }}
