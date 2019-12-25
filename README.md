@@ -51,3 +51,20 @@ The app comes with various capabilities in terms of deployment.
 | DISABLE\_SAILS\_SEED | Useful if you want to quickly have some sample data | false |
 | DISABLE\_GRAPHQL | true disables the middleware, false enables it | false |
 
+# Secrets
+You can create secrets in two different ways.
+
+## Option 1 - create a secret based on an .env file, ensure to run the command for each namespace
+# Create a kubernetes secret based on the values of .env file
+kubectl create secret generic mongodb-auth --from-env-file=.env --namespace jx
+
+## Option 2 - base64 encode values and paste them in the mongodbsecret.yaml
+
+```bash
+
+# create mongodbUsername
+>$ echo -n 'admin' | base64
+
+# create mongodbPassword
+>$ echo -n 'Password1' | base64
+```
