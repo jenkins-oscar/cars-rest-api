@@ -32,24 +32,12 @@ spec:
             - name: DATABASE_PORT
               value: "27017"
             - name: DATABASE_USER
-              valueFrom:
-              secretKeyRef:
-                key: username
-                name: {{ .Release.Name }}-auth
+              value: "vault:secret/mongodb/username"
             - name: MONGODB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  key:  password
-                  name: {{ .Release.Name }}-auth
+              value: "vault:secret/mongodb/password"
             - name: MONGODB_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  key: mongodb-root-password
-                  name: {{ .Release.Name }}-auth                  
-            # - name: DATABASE_NAME
-            #   value: {{ index .Values "cars-rest-api-db" "mongodbDatabase" }}
-            # - name: ALLOW_EMPTY_PASSWORD
-            #   value: "yes"
+              value: "vault:secret/mongodb/mongodb-root-password"
+                 
 
         ports:
         - containerPort: {{ .Values.service.internalPort }}

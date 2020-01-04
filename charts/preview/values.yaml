@@ -32,8 +32,8 @@ preview-db:
   ## Enable authentication
   ## ref: https://docs.mongodb.com/manual/tutorial/enable-authentication/
   # NOTE: make sure this secret is in 
-  usePassword: true
-  existingSecret: preview-auth
+  # usePassword: true
+  # existingSecret: preview-auth
 
   ## MongoDB custom user and database
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#creating-a-user-and-database-on-first-run
