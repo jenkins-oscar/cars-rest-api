@@ -31,7 +31,7 @@ spec:
               value: {{ template "mongodb.fullname" . }}
             - name: DATABASE_PORT
               value: "27017"
-            - name: DATABASE_USER
+            - name: MONGODB_USERNAME
               valueFrom:
               secretKeyRef:
                 key: username
