@@ -34,20 +34,20 @@ spec:
             - name: MONGODB_USERNAME
               valueFrom:
               secretKeyRef:
-                key: username
+                key: mongodb-username
                 name: {{ .Release.Name }}-auth
             - name: MONGODB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key:  password
+                  key:  mongodb-password
                   name: {{ .Release.Name }}-auth
             - name: MONGODB_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   key: mongodb-root-password
                   name: {{ .Release.Name }}-auth                  
-            - name: MONGODB_DATABASE
-              value: cars_rest_api
+            #- name: MONGODB_DATABASE
+            #  value: cars_rest_api
             # - name: ALLOW_EMPTY_PASSWORD
             #   value: "yes"
 
