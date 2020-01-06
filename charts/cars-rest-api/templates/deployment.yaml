@@ -34,12 +34,12 @@ spec:
             - name: MONGODB_USERNAME
               valueFrom:
               secretKeyRef:
-                key: mongodb-username
+                key: username
                 name: {{ .Release.Name }}-auth
             - name: MONGODB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key:  mongodb-password
+                  key:  password
                   name: {{ .Release.Name }}-auth
             - name: MONGODB_ROOT_PASSWORD
               valueFrom:

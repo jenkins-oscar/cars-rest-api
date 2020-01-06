@@ -51,15 +51,15 @@ cars-rest-api-db:
   ## Enable authentication
   ## ref: https://docs.mongodb.com/manual/tutorial/enable-authentication/
   #
-  usePassword: true
+  usePassword: false
   existingSecret: jx-auth
 
   ## MongoDB custom user and database
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#creating-a-user-and-database-on-first-run
   ##
-  mongodbUsername: admin
-  mongodbDatabase: cars_rest_api
-  mongodbPassword: Password1
+  #mongodbUsername: admin
+  #mongodbDatabase: cars_rest_api
+  #mongodbPassword: Password1
 
   ## MongoDB admin password
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#setting-the-root-password-on-first-run
