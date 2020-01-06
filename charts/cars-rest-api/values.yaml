@@ -51,7 +51,7 @@ cars-rest-api-db:
   ## Enable authentication
   ## ref: https://docs.mongodb.com/manual/tutorial/enable-authentication/
   #
-  usePassword: false
+  usePassword: true
   existingSecret: jx-auth
 
   ## MongoDB custom user and database
