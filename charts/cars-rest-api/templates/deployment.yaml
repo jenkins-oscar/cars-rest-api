@@ -29,8 +29,8 @@ spec:
               value: "mongodb://{{ template "fullname" . }}-db:27017/cars_rest_api"
             - name: MONGODB_HOST
               value: {{ template "mongodb.fullname" . }}
-            - name: DATABASE_PORT
-              value: 27017
+            - name: MONGODB_PORT
+              value: "27017"
             - name: MONGODB_USERNAME
               valueFrom:
               secretKeyRef:
