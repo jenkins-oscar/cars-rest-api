@@ -30,7 +30,7 @@ spec:
             - name: MONGODB_HOST
               value: {{ template "mongodb.fullname" . }}
             - name: DATABASE_PORT
-              value: "27017"
+              value: 27017
             - name: MONGODB_USERNAME
               valueFrom:
               secretKeyRef:
@@ -46,7 +46,7 @@ spec:
                 secretKeyRef:
                   key: mongodb-root-password
                   name: {{ .Release.Name }}-auth                  
-            - name: DATABASE_NAME
+            - name: MONGODB_DATABASE
               value: cars_rest_api
             # - name: ALLOW_EMPTY_PASSWORD
             #   value: "yes"
