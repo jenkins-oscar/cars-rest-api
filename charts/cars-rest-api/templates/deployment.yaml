@@ -46,11 +46,11 @@ spec:
                 secretKeyRef:
                   key: mongodb-root-password
                   name: {{ .Release.Name }}-auth                  
-            # - name: MONGODB_DATABASE
-            #   valueFrom:
-            #     secretKeyRef:
-            #       key: mongodbDatabase
-            #       name: {{ .Release.Name }}-auth   
+            - name: MONGODB_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  key: mongodb-database
+                  name: {{ .Release.Name }}-auth   
 
         ports:
         - containerPort: {{ .Values.service.internalPort }}
