@@ -33,9 +33,9 @@ spec:
               value: "27017"
             - name: MONGODB_USERNAME
               valueFrom:
-              secretKeyRef:
-                key: mongodb-username
-                name: {{ .Release.Name }}-auth
+                secretKeyRef:
+                  key: mongodb-username
+                  name: {{ .Release.Name }}-auth
             - name: MONGODB_PASSWORD
               valueFrom:
                 secretKeyRef:
