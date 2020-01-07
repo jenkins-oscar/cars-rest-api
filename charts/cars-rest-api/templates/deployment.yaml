@@ -34,20 +34,23 @@ spec:
             - name: MONGODB_USERNAME
               valueFrom:
               secretKeyRef:
-                key: username
+                key: mongodbUsername
                 name: {{ .Release.Name }}-auth
             - name: MONGODB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key:  password
+                  key:  mongodbPassword
                   name: {{ .Release.Name }}-auth
             - name: MONGODB_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key: mongodb-root-password
+                  key: mongodbRootPassword
                   name: {{ .Release.Name }}-auth                  
             - name: MONGODB_DATABASE
-              value: cars_rest_api
+              valueFrom:
+                secretKeyRef:
+                  key: mongodbDatabase
+                  name: {{ .Release.Name }}-auth   
 
         ports:
         - containerPort: {{ .Values.service.internalPort }}
