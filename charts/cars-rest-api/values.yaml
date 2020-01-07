@@ -47,7 +47,7 @@ cars-rest-api-db:
   ## Whether to deploy a mongodb server to satisfy the applications database requirements.
   ## To use an external database set this to false and configure the externaldb parameters
   enabled: true
- 
+
   ## Enable authentication
   ## ref: https://docs.mongodb.com/manual/tutorial/enable-authentication/
   #
@@ -66,7 +66,10 @@ cars-rest-api-db:
   ##
   # mongodbRootPassword: Password1
 
-
+## Set to true if you would like to see extra information on logs
+  ## It turns on Bitnami debugging in minideb-extras-base
+  ## ref:  https://github.com/bitnami/minideb-extras-base
+  debug: true
 ## Provision an external database (Only if mongodb.enabled is false)
 ## You can:
 ##    1) Pass an already existing Secret with your database credentials
