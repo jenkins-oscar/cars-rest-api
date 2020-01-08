@@ -14,7 +14,6 @@ env:
   MONGODB_DATABASE: cars-rest-api
   MONGODB_ROOT_PASSWORD: vault:mongodb:mongodb-root-password
 
-
 # enable this flag to use knative serve to deploy the app
 knativeDeploy: false
 
