@@ -21,6 +21,11 @@ preview:
     tag:
     pullPolicy: IfNotPresent
 
+  env:
+    MONGODB_USERNAME: vault:mongodb:mongodb-username
+    MONGODB_PASSWORD: vault:mongodb:mongodb-password
+    MONGODB_DATABASE: cars-rest-api
+    MONGODB_ROOT_PASSWORD: vault:mongodb:mongodb-root-password
 ## MongoDB chart configuration
 ## ref: https://github.com/helm/charts/blob/master/stable/mongodb/values.yaml
 ##
@@ -33,13 +38,13 @@ preview-db:
   ## ref: https://docs.mongodb.com/manual/tutorial/enable-authentication/
   # NOTE: make sure this secret is in 
   usePassword: true
-  existingSecret: preview-auth
+  #existingSecret: preview-auth
 
   ## MongoDB custom user and database
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#creating-a-user-and-database-on-first-run
   ##
-  mongodbUsername: mongoadmin
-  mongodbDatabase: cars_rest_api
+  #mongodbUsername: mongoadmin
+  #mongodbDatabase: cars_rest_api
   # mongodbPassword: Password1
 
   ## MongoDB admin password

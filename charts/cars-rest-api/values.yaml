@@ -9,6 +9,11 @@ image:
 
 # define environment variables here as a map of key: value
 env:
+  MONGODB_USERNAME: vault:mongodb:mongodb-username
+  MONGODB_PASSWORD: vault:mongodb:mongodb-password
+  MONGODB_DATABASE: cars-rest-api
+  MONGODB_ROOT_PASSWORD: vault:mongodb:mongodb-root-password
+
 
 # enable this flag to use knative serve to deploy the app
 knativeDeploy: false
@@ -52,13 +57,13 @@ cars-rest-api-db:
   ## ref: https://docs.mongodb.com/manual/tutorial/enable-authentication/
   #
   usePassword: true
-  existingSecret: jx-auth
+  #existingSecret: jx-auth
 
   ## MongoDB custom user and database
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#creating-a-user-and-database-on-first-run
   ##
-  mongodbUsername: mongoadmin
-  mongodbDatabase: cars_rest_api
+  #mongodbUsername: mongoadmin
+  #mongodbDatabase: cars_rest_api
  # mongodbPassword: Password1
 
   ## MongoDB admin password
