@@ -1,0 +1,156 @@
+
+Showing logs for build [32mjenkins-oscar-cars-rest-api-mas-q42sg-1[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-g7vpd[0m
+{"level":"warn","ts":1578691433.7761729,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1578691433.776824,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mjenkins-oscar-cars-rest-api-mas-q42sg-1[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-zkj2m[0m
+{"level":"warn","ts":1578691434.4736736,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1578691434.475445,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mjenkins-oscar-cars-rest-api-mas-q42sg-1[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mjenkins-oscar-cars-rest-api-mas-q42sg-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-jenkins-oscar-cars-rest-api-mas-nvrbq[0m
+{"level":"warn","ts":1578691476.7306297,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1578691477.6262047,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/jenkins-oscar/cars-rest-api.git @ v0.0.73 in path /workspace/source"}
+
+Showing logs for build [32mjenkins-oscar-cars-rest-api-mas-q42sg-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:7728c4dc37a508eb0509c077fd55c64bf82186eb
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mjenkins-oscar-cars-rest-api-mas-q42sg-1[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /workspace/xdg_config/git/credentials
+
+Showing logs for build [32mjenkins-oscar-cars-rest-api-mas-q42sg-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-npmrc[0m
+Command "credential" is deprecated, it will be removed on Feb 1 2020.  This is replaced by Tekton's mounted secrets
+WARNING: failed to find Secret npm-token in namespace **
+
+Showing logs for build [32mjenkins-oscar-cars-rest-api-mas-q42sg-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-npm-install[0m
+
+> typechecker@2.0.8 preinstall /workspace/source/node_modules/extract-opts/node_modules/typechecker
+> node ./cyclic.js
+
+
+> typechecker@2.0.8 preinstall /workspace/source/node_modules/extendr/node_modules/typechecker
+> node ./cyclic.js
+
+
+> sails-seed@0.5.0 postinstall /workspace/source/node_modules/sails-seed
+> node scripts/postinstall
+
+Seed file already exists.
+added 876 packages from 473 contributors and audited 2161 packages in 22.61s
+found 368 vulnerabilities (131 low, 25 moderate, 211 high, 1 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+Showing logs for build [32mjenkins-oscar-cars-rest-api-mas-q42sg-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-npm-test[0m
+
+> cars-rest-api@0.0.1 test /workspace/source
+> echo 'Error: no test specified'
+
+Error: no test specified
+
+Showing logs for build [32mjenkins-oscar-cars-rest-api-mas-q42sg-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-container-build[0m
+[36mINFO[0m[0000] Downloading base image node:8.5.0            
+ERROR: logging before flag.Parse: E0110 21:25:04.442034      12 metadata.go:142] while reading 'google-dockercfg' metadata: http status code: 404 while fetching url http://metadata.google.internal./computeMetadata/v1/instance/attributes/google-dockercfg
+ERROR: logging before flag.Parse: E0110 21:25:04.444760      12 metadata.go:159] while reading 'google-dockercfg-url' metadata: http status code: 404 while fetching url http://metadata.google.internal./computeMetadata/v1/instance/attributes/google-dockercfg-url
+2020/01/10 21:25:04 No matching credentials were found, falling back on anonymous
+[36mINFO[0m[0001] Error while retrieving image from cache: getting file info: stat /workspace/sha256:9f2febb132d813ff7873b6d7631092b2dcdf847b4dff349d79f7620b2768d1b4: no such file or directory 
+[36mINFO[0m[0001] Downloading base image node:8.5.0            
+2020/01/10 21:25:05 No matching credentials were found, falling back on anonymous
+[36mINFO[0m[0001] Executing 0 build triggers                   
+[36mINFO[0m[0001] Applying label Oscar=Medina <me@sharepointoscar.com> 
+[36mINFO[0m[0001] Checking for cached layer gcr.io/**-development/cache:3008020795261cfcf4156453e330a9b9625b6bedc0cac015e6b35f45b7b3be6a... 
+[36mINFO[0m[0002] Using caching version of cmd: RUN mkdir -p /usr/src/app 
+[36mINFO[0m[0002] Using files from context: [/workspace/source/package.json] 
+[36mINFO[0m[0002] Checking for cached layer gcr.io/**-development/cache:a895c415d15fc5a1a23d88ac89d7bee44fb12e4b9b8f4dc5e279fc956604ab0a... 
+[36mINFO[0m[0002] Using caching version of cmd: RUN npm install 
+[36mINFO[0m[0002] Using files from context: [/workspace/source] 
+[36mINFO[0m[0004] cmd: EXPOSE                                  
+[36mINFO[0m[0004] Adding exposed port: 80/tcp                  
+[36mINFO[0m[0004] Skipping unpacking as no commands require it. 
+[36mINFO[0m[0004] Taking snapshot of full filesystem...        
+[36mINFO[0m[0004] LABEL Oscar Medina <me@sharepointoscar.com>  
+[36mINFO[0m[0004] Applying label Oscar=Medina <me@sharepointoscar.com> 
+[36mINFO[0m[0004] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0004] RUN mkdir -p /usr/src/app                    
+[36mINFO[0m[0004] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0004] Taking snapshot of files...                  
+[36mINFO[0m[0004] WORKDIR /usr/src/app                         
+[36mINFO[0m[0004] cmd: workdir                                 
+[36mINFO[0m[0004] Changed working directory to /usr/src/app    
+[36mINFO[0m[0004] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0004] ENV NODE_ENV=${NODE_ENV}                     
+[36mINFO[0m[0004] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0004] ENV PORT ${PORT}                             
+[36mINFO[0m[0004] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0004] ENV MONGODB_HOST=${MONGODB_HOST}             
+[36mINFO[0m[0004] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0004] ENV MONGODB_PORT=${MONGODB_PORT}             
+[36mINFO[0m[0004] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0004] ENV MONGODB_USERNAME=${MONGODB_USERNAME}     
+[36mINFO[0m[0004] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0004] ENV MONGODB_PASSWORD=${MONGODB_PASSWORD}     
+[36mINFO[0m[0004] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0004] ENV MONGODB_URI=${MONGO_URI}                 
+[36mINFO[0m[0004] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0004] Using files from context: [/workspace/source/package.json] 
+[36mINFO[0m[0004] COPY package.json /usr/src/app/              
+[36mINFO[0m[0004] Taking snapshot of files...                  
+[36mINFO[0m[0004] RUN npm install                              
+[36mINFO[0m[0004] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0021] Taking snapshot of files...                  
+[36mINFO[0m[0033] Using files from context: [/workspace/source] 
+[36mINFO[0m[0035] COPY . /usr/src/app                          
+[36mINFO[0m[0056] Taking snapshot of files...                  
+[36mINFO[0m[0064] EXPOSE 80                                    
+[36mINFO[0m[0064] cmd: EXPOSE                                  
+[36mINFO[0m[0064] Adding exposed port: 80/tcp                  
+[36mINFO[0m[0064] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0064] CMD [ "npm", "start" ]                       
+[36mINFO[0m[0064] No files changed in this command, skipping snapshotting. 
+2020/01/10 21:26:08 existing blob: sha256:aa18ad1a0d334d80981104c599fa8cef9264552a265b1197af11274beba767cf
+2020/01/10 21:26:08 existing blob: sha256:f28b27a3711e85640f14424aa619b37bc21fffa359b2496f5a996fe144e5a24d
+2020/01/10 21:26:08 existing blob: sha256:f67323742a64d3540e24632f6d77dfb02e72301c00d1e9a3c28e0ef15478fff9
+2020/01/10 21:26:08 existing blob: sha256:2079c2e3f89a5735792c876d62e87b8f9c0ebec35e3ab602eef835feccf4a0a6
+2020/01/10 21:26:08 existing blob: sha256:41fea39113bff896d196a20e0d032c7535e6a6239b3ce1d9c7749a092794c50e
+2020/01/10 21:26:08 existing blob: sha256:c4b45e832c38de44fbab83d5fcf9cbf66d069a51e6462d89ccc050051f25926d
+2020/01/10 21:26:08 existing blob: sha256:f83e14495c19e0bb1c7187b76571e3c6a2125dae2926678da165cfc6c7da0670
+2020/01/10 21:26:08 existing blob: sha256:15a33158a1367c7c4103c89ae66e8f4fdec4ada6a39d4648cf254b32296d6668
+2020/01/10 21:26:10 pushed blob: sha256:2129d5665bb1c86301bd101b0fd0ad4d04ffc20cf88db23fef8400bbbd9ed39f
+2020/01/10 21:26:10 pushed blob: sha256:2b948fc0c4f40a28e96f0fe5ea6405a98c44d2cd7d055d83b93f1d6ae4610a00
+2020/01/10 21:26:10 pushed blob: sha256:c1977df94092d2310ae01c00a27ec53b74ee5828d5473d939be523a22d1b1440
+2020/01/10 21:26:20 pushed blob: sha256:665780448ed29bf9834bfd7896ec1e1c867afb841e679d339c91d3a5965c257d
+2020/01/10 21:26:23 pushed blob: sha256:1b14ee10cec64c0e74a3b09575ae8e574cc881b3e680940aa3616e4b8e4a7dbe
+2020/01/10 21:26:23 gcr.io/**-development/cars-rest-api:0.0.73: digest: sha256:22d2e0cdd166fad64810b270d1300af0a50c79e1d6e578d7685c971c09f65fb8 size: 2227
+
+Showing logs for build [32mjenkins-oscar-cars-rest-api-mas-q42sg-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-post-build[0m
+no CVE provider running in the current ** namespace so skip adding image to be analysed
+
+Showing logs for build [32mjenkins-oscar-cars-rest-api-mas-q42sg-1[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-changelog[0m
+Converted /workspace/source/charts/cars-rest-api to an unshallow repository
+Generating change log from git ref c8af9e9e47fc0c1681fa3182521abaf0c8fd396d => 82cc0c29f9cbbe3688b3705587ccea0bf1964632
+Associating user x-0 in users.jenkins.io with email me@sharepointoscar.com to git GitProvider user with login -0 as emails match
+Adding label jenkins.io/git-github-userid=-0 to user x-0 in users.jenkins.io
+WARNING: Failed to enrich commit 7728c4dc37a508eb0509c077fd55c64bf82186eb with issues: User.jenkins.io "x-0" is invalid: metadata.labels: Invalid value: "-0": a valid label must be an empty string or consist of alphanumeric characters, '-', '_' or '.', and must start and end with an alphanumeric character (e.g. 'MyValue',  or 'my_value',  or '12345', regex used for validation is '(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?')
+Finding issues in commit messages using git format
+WARNING: No release found for jenkins-oscar/cars-rest-api and tag v0.0.73 so creating a new release
+Updated the release information at https://github.com/jenkins-oscar/cars-rest-api/releases/tag/v0.0.73
+generated: /workspace/source/charts/cars-rest-api/templates/release.yaml
+Created Release cars-rest-api-0-0-73 resource in namespace **
+Updating PipelineActivity jenkins-oscar-cars-rest-api-master-1 with version 0.0.73
+Updated PipelineActivities jenkins-oscar-cars-rest-api-master-1 with release notes URL: https://github.com/jenkins-oscar/cars-rest-api/releases/tag/v0.0.73
+
+Showing logs for build [32mjenkins-oscar-cars-rest-api-mas-q42sg-1[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-helm-release[0m
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: storage.googleapis.com https://storage.googleapis.com/chartmuseum.jenkins-x.io
+Successfully added Helm repository storage.googleapis.com.
+Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080
+Successfully added Helm repository jenkins-x-chartmuseum.
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+error: failed to build dependencies for chart from directory '.': failed to lint the chart '.': failed to run 'helm lint' command in directory '.', output: '==> Linting .
+[INFO] values.yaml: file does not exist
+[ERROR] templates/: render error in "cars-rest-api/templates/service.yaml": template: cars-rest-api/templates/service.yaml:6:14: executing "cars-rest-api/templates/service.yaml" at <.Values.service.name>: nil pointer evaluating interface {}.name
+
+Error: 1 chart(s) linted, 1 chart(s) failed'
+[31m
+Pipeline failed on stage 'from-build-pack' : container 'step-promote-helm-release'. The execution of the pipeline has stopped.[0m
