@@ -10,9 +10,7 @@ image:
 # define environment variables here as a map of key: value
 env:
   MONGODB_DATABASE: cars-rest-api
-  MONGDB_USERNAME: {{ .Parameter.carsapi.MONGDB_USERNAME }}
-  MONGDB_PASSWORD: {{ .Parameter.carsapi.MONGDB_PASSWORD }}
-  MONGDB_ROOT_PASSWORD: {{ .Parameter.carsapi.MONGDB_ROOT_PASSWORD }}
+  
 
 # enable this flag to use knative serve to deploy the app
 knativeDeploy: false
