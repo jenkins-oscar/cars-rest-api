@@ -9,10 +9,7 @@ image:
 
 # define environment variables here as a map of key: value
 env:
-  MONGODB_USERNAME: vault:mongodb:mongodb-username
-  MONGODB_PASSWORD: vault:mongodb:mongodb-password
-  MONGODB_DATABASE: cars-rest-api
-  MONGODB_ROOT_PASSWORD: vault:mongodb:mongodb-root-password
+  MONGODB_DATABASE: cars-rest-api 
 
 # enable this flag to use knative serve to deploy the app
 knativeDeploy: false

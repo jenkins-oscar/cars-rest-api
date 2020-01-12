@@ -1,0 +1,4 @@
+env:
+  MONGDB_USERNAME: {{ .Parameter.carsapi.MONGDB_USERNAME }}
+  MONGDB_PASSWORD: {{ .Parameter.carsapi.MONGDB_PASSWORD }}
+  MONGDB_ROOT_PASSWORD: {{ .Parameter.carsapi.MONGDB_ROOT_PASSWORD }}
