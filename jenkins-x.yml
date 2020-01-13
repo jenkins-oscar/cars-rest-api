@@ -1,20 +1,20 @@
 buildPack: javascript
-pipelineConfig:
-  pipelines:
-    overrides:
-      - pipeline: release    
-        name: helm-release
-        step:
-          image: gcr.io/jenkinsxio/builder-go
-          sh: echo ================================ oscar overriding things =================================
-          sh: jx
-          args:
-            - step
-            - helm
-            - apply
-            - --name
-            - app-name
-            - --namespace 
-            - jx-staging
-            - --verbose
-          dir: /workspace/source/charts/cars-rest-api
+# pipelineConfig:
+#   pipelines:
+#     overrides:
+#       - pipeline: release    
+#         name: helm-release
+#         step:
+#           image: gcr.io/jenkinsxio/builder-go
+#           sh: echo ================================ oscar overriding things =================================
+#           sh: jx
+#           args:
+#             - step
+#             - helm
+#             - apply
+#             - --name
+#             - cars-rest-api
+#             - --namespace 
+#             - jx-staging
+#             - --verbose
+#           dir: /workspace/source/charts/cars-rest-api
