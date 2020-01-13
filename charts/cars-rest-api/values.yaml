@@ -11,11 +11,6 @@ env:
   MONGDB_USERNAME: vault:mongodb:mongodb-username
   MONGDB_PASSWORD: vault:mongodb:mongodb-password
   MONGDB_ROOT_PASSWORD: vault:mongodb:mongodb-root-password
-# define environment variables here as a map of key: value
-  # MONGODB_DATABASE: cars-rest-api
-  # MONGDB_USERNAME: "{{ .Parameters.carsapi.MONGDB_USERNAME }}"
-  # MONGDB_PASSWORD: "{{ .Parameters.carsapi.MONGDB_PASSWORD }}"
-  # MONGDB_ROOT_PASSWORD: "{{ .Parameters.carsapi.MONGDB_ROOT_PASSWORD }}" 
 
 # enable this flag to use knative serve to deploy the app
 knativeDeploy: false
