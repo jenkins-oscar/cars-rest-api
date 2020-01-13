@@ -1,1 +1,17 @@
-buildPack: javascript
+buildPack: none
+pipelineConfig:
+  pipelines:
+    release:
+      pipeline:
+        stages:
+          - name: build
+            steps:
+             - name: deploy-app
+               command: jx
+               args:
+                - step
+                - helm
+                - apply
+                - --name
+                - app-name
+               dir: /workspace/source/charts/cars-rest-api
