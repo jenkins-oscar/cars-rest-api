@@ -16,4 +16,6 @@ pipelineConfig:
                 - apply
                 - --name
                 - app-name
+                - --namespace 
+                - jx-staging
               dir: /workspace/source/charts/cars-rest-api
