@@ -3,15 +3,17 @@ pipelineConfig:
   pipelines:
     release:
       pipeline:
+        agent:
+          image: gcr.io/jenkinsxio/builder-go
         stages:
           - name: build
             steps:
-             - name: deploy-app
-               command: jx
-               args:
+            - name: deploy-app
+              command: jx
+              args:
                 - step
                 - helm
                 - apply
                 - --name
                 - app-name
-               dir: /workspace/source/charts/cars-rest-api
+              dir: /workspace/source/charts/cars-rest-api
