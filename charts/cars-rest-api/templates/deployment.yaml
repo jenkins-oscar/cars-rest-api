@@ -25,20 +25,20 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
             - name: MONGODB_URI
-              value: "mongodb://mongoadmin:Password1@{{ template "mongodb.fullname" . }}-db:27017/cars_rest_api"
+              value: "mongodb://mongoadmin:Password1@{{ template "fullname" . }}-db:27017/cars_rest_api"
               #value: "mongodb://{{ template "fullname" . }}-db:27017/cars_rest_api"
             - name: MONGODB_HOST
-              value: "{{ template "mongodb.fullname" . }}-db"  
+              value: "{{ template "fullname" . }}-db"  
             - name: MONGODB_PORT
               value: "27017"
-            # - name: MONGODB_USERNAME
-            #   value: {{.Values.env.MONGODB_USERNAME}}
-            # - name: MONGODB_PASSWORD
-            #   value: {{.Values.env.MONGODB_PASSWORD}}
-            # - name: MONGODB_ROOT_PASSWORD
-            #   value: {{.Values.env.MONGODB_ROOT_PASSWORD}} 
-            # - name: MONGODB_DATABASE
-            #   value: {{.Values.env.MONGODB_DATABASE}} 
+            - name: MONGODB_USERNAME
+              value: {{.Values.env.MONGODB_USERNAME}}
+            - name: MONGODB_PASSWORD
+              value: {{.Values.env.MONGODB_PASSWORD}}
+            - name: MONGODB_ROOT_PASSWORD
+              value: {{.Values.env.MONGODB_ROOT_PASSWORD}} 
+            - name: MONGODB_DATABASE
+              value: {{.Values.env.MONGODB_DATABASE}} 
 
         ports:
         - containerPort: {{ .Values.service.internalPort }}
