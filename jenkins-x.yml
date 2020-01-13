@@ -1,21 +1,18 @@
-buildPack: none
+buildPack: javascript
 pipelineConfig:
   pipelines:
-    release:
-      pipeline:
-        agent:
-          image: gcr.io/jenkinsxio/builder-go
-        stages:
-          - name: build
-            steps:
-            - name: deploy-app
-              command: jx
-              args:
-                - step
-                - helm
-                - apply
-                - --name
-                - app-name
-                - --namespace 
-                - jx-staging
-              dir: /workspace/source/charts/cars-rest-api
+    overrides:
+    - pipeline: release    
+      stage: promote
+      steps:
+        - name: helm-release
+          command: jx
+          args:
+            - step
+            - helm
+            - apply
+            - --name
+            - app-name
+            - --namespace 
+            - jx-staging
+          dir: /workspace/source/charts/cars-rest-api
