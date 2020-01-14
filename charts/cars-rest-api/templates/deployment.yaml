@@ -25,7 +25,7 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
             - name: MONGODB_URI
-              value: "mongodb://mongoadmin:Password1@{{ template "fullname" . }}-db:27017/cars_rest_api"
+              value: "mongodb://mongoadmin:JenkinsXRocks1@{{ template "fullname" . }}-db:27017/cars_rest_api?authSource=admin"
               #value: "mongodb://{{ template "fullname" . }}-db:27017/cars_rest_api"
             - name: MONGODB_HOST
               value: "{{ template "fullname" . }}-db"  
