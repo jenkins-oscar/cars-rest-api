@@ -69,6 +69,8 @@ cars-rest-api-db:
   mongodbRootPassword: vault:mongodb:mongodb-root-password
 
 
+  persistence.enabled: false
+
   ## Set to true if you would like to see extra information on logs
   ## It turns on Bitnami debugging in minideb-extras-base
   ## ref:  https://github.com/bitnami/minideb-extras-base
