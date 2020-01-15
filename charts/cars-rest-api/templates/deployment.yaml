@@ -11,7 +11,7 @@ spec:
   replicas: {{ .Values.replicaCount }}
   template:
     metadata:
-      rollme: {{ randAlphaNum 5 | quote }} #force update everytime make changes for now.
+      rollme: {{ randAlphaNum 5 | quote }} 
       labels:
         draft: {{ default "draft-app" .Values.draft }}
         app: {{ template "fullname" . }}
