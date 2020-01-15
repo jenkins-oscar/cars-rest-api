@@ -66,7 +66,7 @@ cars-rest-api-db:
   ## MongoDB admin password
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#setting-the-root-password-on-first-run
   ##
-  mongodbRootPassword: vault:mongodb:mongodb-database
+  mongodbRootPassword: vault:mongodb:mongodb-root-password
 
 ## Set to true if you would like to see extra information on logs
   ## It turns on Bitnami debugging in minideb-extras-base
