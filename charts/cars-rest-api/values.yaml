@@ -66,8 +66,8 @@ cars-rest-api-db:
   ## MongoDB admin password
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#setting-the-root-password-on-first-run
   ##
-  mongodbRootPassword: "OscarMedina01"
-  
+  mongodbRootPassword: "vault:mongodb:mongodb-root-password"
+
   persistence.enabled: false
 
   ## Set to true if you would like to see extra information on logs
