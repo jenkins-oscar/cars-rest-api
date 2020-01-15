@@ -54,8 +54,8 @@ externaldb:
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: draft
-  tag: dev
+  repository: gcr.io/jx-development/cars-rest-api
+  tag: 0.0.96
   pullPolicy: IfNotPresent
 
 env:
