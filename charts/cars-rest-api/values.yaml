@@ -23,6 +23,9 @@ service:
   annotations:
     fabric8.io/expose: "true"
     fabric8.io/ingress.annotations: "kubernetes.io/ingress.class: nginx"
+    fabric8.io/ingress.annotations: |-
+    nginx.ingress.kubernetes.io/auth-signin: https://auth.sharepointoscar.com/oauth2/start?rd=%2F$server_name$escaped_request_uri
+    nginx.ingress.kubernetes.io/auth-url: https://auth.sharepointoscar.com/oauth2/auth
 resources:
   limits:
     cpu: 400m
