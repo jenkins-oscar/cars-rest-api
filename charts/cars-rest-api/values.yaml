@@ -10,6 +10,7 @@ image:
 env:
   MONGDB_USERNAME: vault:mongodb:mongodb-username
   MONGDB_PASSWORD: vault:mongodb:mongodb-password
+  MONGODB_DATABASE: cars-rest-api
   MONGDB_ROOT_PASSWORD: vault:mongodb:mongodb-root-password
 
 # enable this flag to use knative serve to deploy the app
@@ -23,7 +24,7 @@ service:
   annotations:
     fabric8.io/expose: "true"
     fabric8.io/ingress.annotations: "kubernetes.io/ingress.class: nginx"
-    
+
 resources:
   limits:
     cpu: 400m

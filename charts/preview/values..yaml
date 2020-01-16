@@ -43,14 +43,14 @@ preview-db:
   ## MongoDB custom user and database
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#creating-a-user-and-database-on-first-run
   ##
-  mongodbUsername: mongoadmin
-  mongodbDatabase: cars_rest_api
-  # mongodbPassword: Password1
+  mongodbUsername: "vault:mongodb:mongodb-username"
+  mongodbDatabase: "cars_rest_api"
+  mongodbPassword: "vault:mongodb:mongodb-password"
 
-  ## MongoDB admin password
+    ## MongoDB admin password
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#setting-the-root-password-on-first-run
   ##
-  # mongodbRootPassword: Password1
+  mongodbRootPassword: "vault:mongodb:mongodb-root-password"
 
 ## Provision an external database (Only if mongodb.enabled is false)
 ## You can:
