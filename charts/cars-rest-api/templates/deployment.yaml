@@ -39,6 +39,8 @@ spec:
               value: {{.Values.env.MONGODB_ROOT_PASSWORD}} 
             - name: MONGODB_DATABASE
               value: {{.Values.env.MONGODB_DATABASE}} 
+            - name: ELASTICSEARCH_URL
+              value: {{ .Release.Name }}-elasticsearch-client:9200
 
         ports:
         - containerPort: {{ .Values.service.internalPort }}
