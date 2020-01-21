@@ -72,7 +72,7 @@ module.exports.connections = {
   },
   myLocalElasticsearch: {
     adapter: 'elasticsearch',
-    hosts: [process.env.ELASTICSEARCH_URL:9200],
+    hosts: [process.env.ELASTICSEARCH_URL],
     keepAlive: true,
     sniffOnStart: true,
     maxRetries: 10,
