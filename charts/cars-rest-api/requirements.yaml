@@ -9,3 +9,4 @@ dependencies:
   alias: elk
   version: 1.8.0
   repository: https://kubernetes-charts.storage.googleapis.com
+  condition. elk.enabled
