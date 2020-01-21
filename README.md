@@ -1,14 +1,15 @@
-# README
 
-## Cars
+![Cars REST API](assets/images/R8.png)
+
+
+
+
+# Cars REST API
 
 a [Sails](http://sailsjs.org) application that can be used while you test Docker Containers including Orchestration using Kubernetes
 
 This is a sample REST API project based on SailsJS, showcases blueprints, actions and other out of the box capabilities. It also showcases how to use the ELK stack \(Elasticsearch, Logstash, Kibana\), models have a coordinates field, and therefore you can show cars on the map within Kibana visualizations.
 
-### Overview
-
-The cars-api App demonstrates how to use the Microservice API Gateway Pattern.
 
 ### Architecture
 
@@ -17,7 +18,7 @@ The following components are part of the overall solution
 * Cars REST API
 * Search Service \(Elasticsearch\)
 * MongoDB
-* Kong API Gateway
+
 
 ### API Gateway
 
