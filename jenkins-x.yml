@@ -1,20 +1,22 @@
 buildPack: javascript
-# pipelineConfig:
-#   pipelines:
-#     overrides:
-#       - pipeline: release    
-#         name: helm-release
-#         step:
-#           image: gcr.io/jenkinsxio/builder-go
-#           sh: echo ================================ oscar overriding things =================================
-#           sh: jx
-#           args:
-#             - step
-#             - helm
-#             - apply
-#             - --name
-#             - cars-rest-api
-#             - --namespace 
-#             - jx-staging
-#             - --verbose
-#           dir: /workspace/source/charts/cars-rest-api
+pipelineConfig:
+    # Environment variables defined at the top level can be overridden in stages and individual
+  # steps.
+  env:
+    - name: MONGDB_USERNAME
+      value: vault:mongodb:mongodb-username
+    - name: MONGDB_PASSWORD
+      value: vault:mongodb:mongodb-password
+    - name: MONGDB_ROOT_PASSWORD
+      value: vault:mongodb:mongodb-root-password
+  pipelines:
+    overrides:
+      - pipeline: release
+        stage: build
+        type: before
+        steps:
+        - sh: echo ====================================== MONGDB_USERNAME= ${MONGDB_USERNAME} ======================================
+          name: sposcar-echo-mongodb-username
+        - sh: echo ====================================== MONGDB_PASSWORD= ${MONGDB_PASSWORD} ======================================
+          name: sposcar-echo-mongodb-password
+
