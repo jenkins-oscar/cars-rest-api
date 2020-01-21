@@ -32,7 +32,7 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "ENV=development PORT=1337 ENABLE_ELASTICSEARCH=false DISABLE_SAILS_SEED=true DISABLE_GRAPHQL=true node app.js"
+    "start": "ENV=development PORT=1337 ENABLE_ELASTICSEARCH=true DISABLE_SAILS_SEED=false DISABLE_GRAPHQL=true node app.js"
   },
   "main": "app.js",
   "repository": {
