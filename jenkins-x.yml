@@ -15,7 +15,7 @@ pipelineConfig:
         stage: build
         type: before
         steps:
-        - sh: echo ====================================== MONGDB_USERNAME= ${MONGDB_USERNAME} ======================================
+        - sh: echo ====================================== OH LOOK MONGDB_USERNAME= ${MONGDB_USERNAME} ======================================
           name: sposcar-echo-mongodb-username
         - sh: echo ====================================== MONGDB_PASSWORD= ${MONGDB_PASSWORD} ======================================
           name: sposcar-echo-mongodb-password
