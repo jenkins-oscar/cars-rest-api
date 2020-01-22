@@ -11,7 +11,6 @@
 module.exports.seeds = {
 
     disable: true,
-    _hookTimeout: 700000,
     person: { 
         overwrite: true,
         data: [{

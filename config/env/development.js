@@ -23,12 +23,13 @@ module.exports = {
    },
 
   /***************************************************************************
-   * Set the port in the developm ent environment to 443                        *
+   * Set the port in the development environment                             *
    ***************************************************************************/
 
    port: process.env.PORT,
  	 environment: 'development',
-
+  
+   hookTimeout: 60000
 };
 
 

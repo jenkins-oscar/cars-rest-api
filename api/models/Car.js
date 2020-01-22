@@ -37,8 +37,8 @@ module.exports = {
   afterCreate: function (car, callback){
  
     sails.log("NEW CAR: "+JSON.stringify(car,null,2));
-    sails.log("IS ELASTIC ENABLEDED: "+ process.env.ENABLE_ELASTICSEARCH);
-      if(process.env.ENABLE_ELASTICSEARCH == true){
+    sails.log("IS ELASTIC ENABLED NOW: "+ process.env.ENABLE_ELASTICSEARCH);
+      if(process.env.ENABLE_ELASTICSEARCH == "true"){
         var DSLQuery ={
           index: 'car-api',
           type: 'car',

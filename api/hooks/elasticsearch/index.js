@@ -49,15 +49,17 @@ module.exports = function(sails){
             
             if(err){sails.log(JSON.stringify(err,null,2));}
 
-            sails.log(JSON.stringify(response,null,2));
-            
             //if the car-api index does not exist create it
             if(!response){
+
+                sails.log('************ INDEX CAR-API DOES NOT EXIST, SO CREATING ********************* ');
                 client.indices.create(config, function(err,response){
+                   
                     if(err){sails.log(JSON.stringify(err,null,2));
                     }
                     else{
-                       
+                        
+                        sails.log('************ CREATED INDEX CAR-API   NOT EXISTED ********************* ');
                         sails.log(JSON.stringify(response,null,2));
                     }
  

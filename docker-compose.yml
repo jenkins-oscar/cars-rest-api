@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: sharepointoscar/cars-api:v3
+    image: sharepointoscar/cars-api:v4
     ports:
       - '1337:1337'
     environment:
@@ -13,9 +13,12 @@ services:
       - MONGODB_HOST=database
       - MONGODB_PORT=27017
       - MONGODB_URI=mongodb://mongoadmin:password01@database:27017/cars_api?authSource=admin
-      - ENABLE_ELASTICSEARCH=false
-      - DISABLE_SAILS_SEED=false
-      - DISABLE_GRAPHQL=false
+      - MONGODB_USERNAME=mongoadmin
+      - MONGODB_PASSWORD=password01
+      - ENABLE_ELASTICSEARCH=true
+      - ELASTICSEARCH_URL=localhost:9200
+      - DISABLE_SAILS_SEED=true
+      - DISABLE_GRAPHQL=true
     depends_on:
       - database
     links:
@@ -30,3 +33,31 @@ services:
       - 27017:27017
     volumes:
       - /Users/omedina/Documents:/var/lib/mongodb
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.6
+    environment:
+      - cluster.name=oscar-search
+      - bootstrap.memory_lock=true
+      - transport.host=localhost
+      - transport.tcp.port=9300
+      - http.port=9200
+      - http.host=0.0.0.0
+      - cluster.routing.allocation.disk.threshold_enabled=false
+      - cluster.routing.allocation.disk.watermark.low=2gb
+      - cluster.routing.allocation.disk.watermark.high=1gb
+      - cluster.routing.allocation.disk.watermark.flood_stage=512mb
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.8.6
+    environment: 
+      - opendistro_security.multitenancy.enabled=false
+    ports:
+      - "5601:5601"
