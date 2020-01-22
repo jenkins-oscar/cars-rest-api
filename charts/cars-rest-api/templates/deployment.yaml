@@ -42,9 +42,9 @@ spec:
             - name: ELASTICSEARCH_URL
               value: {{ .Release.Name }}-elasticsearch-client:9200
             - name: ENABLE_ELASTICSEARCH
-              value: true
+              value: "true"
             - name: DISABLE_SAILS_SEED
-              value: false
+              value: "false"
 
         ports:
         - containerPort: {{ .Values.service.internalPort }}
