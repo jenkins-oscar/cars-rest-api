@@ -38,19 +38,38 @@ module.exports = {
  
     sails.log("NEW CAR: "+JSON.stringify(car,null,2));
     sails.log("IS ELASTIC ENABLED NOW: "+ process.env.ENABLE_ELASTICSEARCH);
+    sails.log("IS ELASTIC URL: "+ process.env.ELASTICSEARCH_URL);
       if(process.env.ENABLE_ELASTICSEARCH == "true"){
         var DSLQuery ={
-          index: 'car-api',
+          index: 'cars-api',
           type: 'car',
           id: car.id,
           body: JSON.stringify(car)
         };
-        sails.hooks.elasticsearch.elasticClient.create(DSLQuery,function(err,response){
-          if(err){sails.log("elastic search response err: "+ JSON.stringify(err,null,2));}
-    
-          sails.log(response);
-    
+        
+
+        var elasticsearch = require('elasticsearch');
+        var client = new elasticsearch.Client({
+          hosts:sails.config.connections.myLocalElasticsearch,
+          keepAlive:true,
+          apiVersion:'7.5'
         });
+
+        client.create(DSLQuery,(err,result) => {
+          
+          if(err) sails.log('================== error indexing new car ', err);
+
+          sails.log('************ INDEXD CAR-API CAR: ********************* ',result);
+        });
+
+
+
+        // sails.hooks.elasticsearch.elasticClient.create(DSLQuery,function(err,response){
+        //   if(err){sails.log("elastic search response err: "+ JSON.stringify(err,null,2));}
+    
+        //   sails.log(response);
+    
+        // });
     }
 
 

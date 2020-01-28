@@ -1,4 +1,4 @@
-version: '2'
+version: '2.2'
 services:
   api:
     build:
@@ -10,18 +10,16 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=1337
-      - MONGODB_HOST=database
+      - MONGODB_HOST=localhost
       - MONGODB_PORT=27017
       - MONGODB_URI=mongodb://mongoadmin:password01@database:27017/cars_api?authSource=admin
       - MONGODB_USERNAME=mongoadmin
       - MONGODB_PASSWORD=password01
       - ENABLE_ELASTICSEARCH=true
-      - ELASTICSEARCH_URL=localhost:9200
-      - DISABLE_SAILS_SEED=true
+      - ELASTICSEARCH_URL=http://localhost:9200
+      - DISABLE_SAILS_SEED=false
       - DISABLE_GRAPHQL=true
-    depends_on:
-      - database
-    links:
+    depends_on: 
       - database
   database:
     image: mongo:4.0
@@ -35,19 +33,21 @@ services:
       - /Users/omedina/Documents:/var/lib/mongodb
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.6
+    image: elasticsearch:7.5.0
     environment:
       - cluster.name=oscar-search
       - bootstrap.memory_lock=true
-      - transport.host=localhost
-      - transport.tcp.port=9300
-      - http.port=9200
-      - http.host=0.0.0.0
+      - discovery.type=single-node
+      - transport.host=127.0.0.1
+      #- transport.tcp.port=9300
+      #- http.port=9200
+      - http.host=127.0.0.1
+      - network.host=127.0.0.1
       - cluster.routing.allocation.disk.threshold_enabled=false
       - cluster.routing.allocation.disk.watermark.low=2gb
       - cluster.routing.allocation.disk.watermark.high=1gb
       - cluster.routing.allocation.disk.watermark.flood_stage=512mb
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms4g -Xmx4g"
   
     ulimits:
       memlock:
@@ -56,7 +56,7 @@ services:
     ports:
       - "9200:9200"
   kibana:
-    image: docker.elastic.co/kibana/kibana:6.8.6
+    image: kibana:7.5.0
     environment: 
       - opendistro_security.multitenancy.enabled=false
     ports:
