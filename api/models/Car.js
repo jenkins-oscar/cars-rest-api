@@ -39,20 +39,20 @@ module.exports = {
     sails.log("NEW CAR: "+JSON.stringify(car,null,2));
     sails.log("IS ELASTIC ENABLED NOW: "+ process.env.ENABLE_ELASTICSEARCH);
       if(process.env.ENABLE_ELASTICSEARCH == "true"){
-        var DSLQuery ={
-          index: 'car-api',
-          type: 'car',
-          id: car.id,
-          body: JSON.stringify(car)
-        };
-        sails.hooks.elasticsearch.elasticClient.create(DSLQuery,function(err,response){
-          if(err){sails.log("elastic search response err: "+ JSON.stringify(err,null,2));}
-    
-          sails.log(response);
-    
-        });
-    }
 
+        var DSLQuery ={
+            index: "car",
+            id: car.id,
+            body: JSON.stringify(car)
+      };
+      sails.hooks.elasticsearch.elasticClient.create(DSLQuery,function(err,response){
+        if(err){sails.log("elastic search response err: "+ JSON.stringify(err,null,2));}
+
+        sails.log(response);
+
+      });
+
+  }
 
     callback();
   },
@@ -68,6 +68,7 @@ module.exports = {
       .exec(function (err, p){
   
           if (err) return callback(err);
+          
           _carOwner =  {"person":p};
           sails.log('found person:' + JSON.stringify(p,null,2));
   
@@ -77,7 +78,6 @@ module.exports = {
 
           var DSLQuery ={
             index: 'car-api',
-            type: 'car',
             id: car.id,
             body: JSON.stringify(_updatedCar)
           };

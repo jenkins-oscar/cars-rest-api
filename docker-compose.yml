@@ -10,9 +10,9 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=1337
-      - MONGODB_HOST=database
+      - MONGODB_HOST=localhost
       - MONGODB_PORT=27017
-      - MONGODB_URI=mongodb://mongoadmin:password01@database:27017/cars_api?authSource=admin
+      - MONGODB_URI=mongodb://mongoadmin:password01@localhost:27017/cars_api?authSource=admin
       - MONGODB_USERNAME=mongoadmin
       - MONGODB_PASSWORD=password01
       - ENABLE_ELASTICSEARCH=true
@@ -21,8 +21,11 @@ services:
       - DISABLE_GRAPHQL=true
     depends_on:
       - database
+      - elasticsearch
     links:
       - database
+
+
   database:
     image: mongo:4.0
     environment: 
@@ -34,14 +37,16 @@ services:
     volumes:
       - /Users/omedina/Documents:/var/lib/mongodb
 
+
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.6
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
     environment:
-      - cluster.name=oscar-search
+      - cluster.name="oscar-search"
       - bootstrap.memory_lock=true
       - transport.host=localhost
       - transport.tcp.port=9300
       - http.port=9200
+      - network.host=localhost
       - http.host=0.0.0.0
       - cluster.routing.allocation.disk.threshold_enabled=false
       - cluster.routing.allocation.disk.watermark.low=2gb
@@ -55,9 +60,15 @@ services:
         hard: -1
     ports:
       - "9200:9200"
+      - "9300:9300"
+
   kibana:
-    image: docker.elastic.co/kibana/kibana:6.8.6
+    image: docker.elastic.co/kibana/kibana:7.6.2
     environment: 
       - opendistro_security.multitenancy.enabled=false
     ports:
       - "5601:5601"
+    depends_on:
+      - elasticsearch
+
+

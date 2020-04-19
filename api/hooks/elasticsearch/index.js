@@ -6,11 +6,10 @@
  */
 module.exports = function(sails){
 
-    // private methods and variables
-    var elasticsearch = require('elasticsearch');
-    //instantiate elasticsearch client with local config
-    var client = new elasticsearch.Client(sails.config.connections.myLocalElasticsearch);
-    
+
+    const { Client } = require('@elastic/elasticsearch')
+    const client = new Client({ node: 'http://localhost:9200',log:'trace' });
+
     return {  
         elasticClient: client,
         configure: function() {
@@ -21,65 +20,97 @@ module.exports = function(sails){
         // _.each(sails.models,function(model){
         //     sails.log.debug(model);
         // });
+        var _car_index = {
+            index:"car",
+            body:{
+                "mappings" : {
+                    "properties":{
+                        "year" : {"type" : "date" },
+                        "model": {"type": "keyword"},
+                        "make":  {"type": "keyword"},
+                        "color": {"type": "text"},
+                        "coordinates":{"type": "geo_point"}
+                    }
+                }
+            }
+
+        };
+        var _person_index = {
+            index:"person",
+            body:{
+                "mappings" : {
+                    "properties":{   
+                        "firstname": {"type": "keyword"},
+                        "lastname":  {"type": "keyword"},
+                        "email": {"type": "text"},
+                        "id":{"type": "text"}
+                    }
+                }
+            }
+
+        };
         var config = {
-                index:'car-api',
+                index: "car",
                 body:{
-                    "settings": {
-                        "number_of_shards" : 3,
-                        "number_of_replicas" : 2 
-                    },
                     "mappings": {
-                        "car" : {
+                        "_doc" : {
                             "properties" : {
-                                "year" : { "type" : "date",format:"strict_date_optional_time" },
+                                "type": { "type": "keyword" },
+                                "year" : { "type" : 'date',"format": "yyyy" },
                                 "model": {"type": 'text'},
                                 "make": {"type": 'text'},
                                 "color": {"type": 'text'},
                                 "coordinates":{"type": "geo_point"},
-                                "person": {
-                                    "type": "nested" 
-                                  }
+                                "firstname": { "type": "text" },
+                                "lastname":  { "type": "text" },
+                                "email":     { "type": "keyword" },
+                                "_owner_id": {"type": "keyword"}
+                                
                             }
                         }
                     }
                 }
         };
+        async function setupIndex () {
 
-        client.indices.exists({index:'car-api'},function(err,response,status){
-            
-            if(err){sails.log(JSON.stringify(err,null,2));}
+            const _carIndexExists = await client.indices.exists({index:'car'});
+            const _personIndexExists = await client.indices.exists({index:'person'});
 
-            //if the car-api index does not exist create it
-            if(!response){
+            if (_carIndexExists.body == false) {
 
-                sails.log('************ INDEX CAR-API DOES NOT EXIST, SO CREATING ********************* ');
-                client.indices.create(config, function(err,response){
-                   
-                    if(err){sails.log(JSON.stringify(err,null,2));
-                    }
-                    else{
-                        
-                        sails.log('************ CREATED INDEX CAR-API   NOT EXISTED ********************* ');
-                        sails.log(JSON.stringify(response,null,2));
-                    }
- 
-                });
-                
-            }else{ 
-                sails.log('************ INDEX CAR-API ALREADY EXISTS NOT CREATED ********************* ');
+                sails.log('************  car index does not exist, creating... *********************');
+                const _indexCarCreated = await client.indices.create(_car_index)
+
+                if(_indexCarCreated.statusCode == 200){
+                    
+                     sails.log('************  CAR INDEX CREATED!  *********************',JSON.stringify(_indexCarCreated.meta,null,2)); 
+
+                }
+
+            }
+            if(_personIndexExists.body == false) {
+
+                const _indexPersonCreated = await client.indices.create(_person_index)
+                if(_indexPersonCreated.statusCode == 200) {
+
+                    sails.log('************  PERSON INDEX CREATED!  *********************',JSON.stringify(_indexPersonCreated.meta,null,2));   
+                }
             }
 
-        });
+        }
 
-        },
+        setupIndex().catch(console.log);
+ 
+        }
+
       
       // initialize is not required, but if included
       // it must return cb();
-      initialize: function(cb) {    
+    //   initialize: function(cb) {    
 
-        this.configure();
-        return cb();
+    //     this.configure();
+    //     cb();
         
-      }
+    //   }
     }   
 }

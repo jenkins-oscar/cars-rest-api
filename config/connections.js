@@ -71,13 +71,13 @@ module.exports.connections = {
     url: process.env.MONGODB_URI
   },
   myLocalElasticsearch: {
-    adapter: 'elasticsearch',
+    adapter: '@elastic/elasticsearch',
     hosts: [process.env.ELASTICSEARCH_URL],
     keepAlive: true,
     sniffOnStart: false,
     maxRetries: 20,
     deadTimeout: 40000,
-    apiVersion: '6.0'
+    apiVersion: '7.4'
   },
   productionElasticsearch: {
     adapter: 'elasticsearch',

@@ -29,7 +29,7 @@ module.exports = {
    port: process.env.PORT,
  	 environment: 'development',
   
-   hookTimeout: 60000
+   hookTimeout: 300000
 };
 
 
